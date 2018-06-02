@@ -8,6 +8,7 @@
 \usepackage{graphicx}
 \usepackage[margin=0.5in]{geometry}
 \setlength{\parindent}{0cm}
+\usepackage{enumerate}
 
 \begin{document}
 
@@ -15,7 +16,9 @@
 
 足の付け根を軸にしたときの足の慣性モーメントは次のように定義される:
 
-$$ \Gamma = \iiint_V r^2 dV $$
+\begin{equation}
+\Gamma = \iiint_V r^2 dm
+\end{equation}
 
 足を体位長さあたりの重量 $\rho$ の線状のものにモデル化する。
 足の付け根から膝までの長さを $L$ とした上で、膝から足首までの長さもそれと同一視し $=L$ とする。 足首より下の部分の重さを無視する。
@@ -28,11 +31,11 @@ $$ \Gamma = \iiint_V r^2 dV $$
 
 \begin{equation}
 \begin{split}
-\Gamma & \simeq \rho\int_0^L l^2 dl + \rho\int_0^L (L - l\cos\alpha)^2 + (l\sin\alpha)^2 dl\\
+\Gamma & \simeq \underbrace{\rho\int_0^L l^2 dl}_{太股} + \underbrace{\rho\int_0^L (L - l\cos\alpha)^2 + (l\sin\alpha)^2 dl}_{脛}\\
  & = \rho\left[l^3/3\right]_0^L + \rho\int_0^L (L^2 + l^2\cos^2\alpha - 2Ll\cos\alpha + l^2\sin^2\alpha) dl\\
  & = \rho L^3/3 + \int_0^L (L^2 + l^2 - 2Ll\cos\alpha) dl\\
  & = \rho L^3/3 + \rho\left(L^2\left[l\right]_0^L + \left[l^3/3\right]_0^L - 2L\cos\alpha\left[l^2/2\right]_0^L \right)\\
- & = \rho L^3/3 + \rho L^3\left(4/3 - \cos\alpha  \right)
+ & = \underbrace{\rho L^3/3}_{太股} + \underbrace{\rho L^3\left(4/3 - \cos\alpha  \right)}_{脛}
 \end{split}
 \end{equation}
 
@@ -42,5 +45,11 @@ $$ \Gamma = \iiint_V r^2 dV $$
 \centering
 \includegraphics[width=0.6\textwidth]{plot.eps}
 \end{figure}
+
+その他考察:
+\begin{itemize}
+\item 慣性モーメントは重さに直接比例する:$\Gamma\propto\alpha$
+\item 慣性モーメントは足の長さの3乗(!)に比例する:$\Gamma\propto{}L^3$
+\end{itemize}
 
 \end{document}
